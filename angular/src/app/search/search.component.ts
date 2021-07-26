@@ -12,29 +12,21 @@ export class SearchComponent implements OnInit {
   
   public listOfPrograms!: Array<Program>;
   public searchData!: string; 
+  private params = new HttpParams();
   
-  constructor(private http: HttpClient) {    
-    
-    this.http.get<any>(environment.baseUrl).subscribe(
-      result => {
-        this.listOfPrograms = result;
-      },
-      error =>{
-        console.log(error);        
-      }     
-    ); 
-   }
+  constructor(private http: HttpClient) {  }
 
   ngOnInit(): void {
   }
 
-  selectedProgram: any;
-  filterdPrograms!: Array<Program>;
-  filterPrograms() {
-    this.filterdPrograms = this.listOfPrograms.filter(
-      item => item.programName.toLowerCase().includes(this.selectedProgram.toLowerCase())
-    );
-    console.log(this.filterdPrograms);
-    }
+    getData(searchData: string){
+      this.params.set('searchData', this.searchData)      
+      return this.http.get<any>(environment.baseUrl, {params: {searchData: this.searchData}}).subscribe(result => {
+        this.listOfPrograms = result
+      },
+      error =>{
+        console.log(error);
+      });
+  }
 
 }

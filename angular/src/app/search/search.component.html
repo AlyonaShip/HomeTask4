@@ -1,6 +1,6 @@
-<input type = "text" [(ngModel)]="selectedProgram" (input) = "filterPrograms()" />
-
-<pre>
-{{filterdPrograms | json}}
-</pre>
-
+<div>
+    <input type="text" placeholder="Search.." [(ngModel)]="searchData" (input)="getData(searchData)"/>
+    <div *ngIf="listOfPrograms">
+        <p  *ngFor="let prog of listOfPrograms.slice(0, 10)">{{prog.programName}}</p>        
+    </div>
+</div>
