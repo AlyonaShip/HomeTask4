@@ -14,7 +14,14 @@ export class SearchComponent implements OnInit {
   public searchData!: string; 
   private params = new HttpParams();
   
-  constructor(private http: HttpClient) {  }
+  constructor(private http: HttpClient) { 
+    this.http.get<any>(environment.baseUrl).subscribe(result =>{
+      this.listOfPrograms = result;
+    },
+    error =>{
+      console.log(error);
+    })
+   }
 
   ngOnInit(): void {
   }
