@@ -39,23 +39,7 @@ namespace WebApiApp.Controllers
         [HttpGet]
         public JsonResult SearchData(string searchData)
         {
-            return new JsonResult(!string.IsNullOrEmpty(searchData)? progList.Where(x => x.ProgramName.ToLower().Contains(searchData)).ToList() : progList);
-            //var listOfPrograms = new List<ProgramData>();
-            //if (!string.IsNullOrEmpty(searchData))
-            //{
-            //    foreach (var prog in progList)
-            //    {
-            //        if (prog.ProgramName.Length >= searchData.Length && prog.ProgramName.Substring(0, searchData.Length).ToLower() == searchData.ToLower())
-            //        {
-            //            listOfPrograms.Add(prog);
-            //        }
-            //    }
-            //}
-            //else
-            //{
-            //    listOfPrograms = progList;
-            //}
-            //return new JsonResult(listOfPrograms);
+            return new JsonResult(!string.IsNullOrEmpty(searchData)? progList.Where(x => x.ProgramName.ToLower().Contains(searchData)).ToList() : progList);            
         }       
     }
 }
