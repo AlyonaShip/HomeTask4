@@ -1,5 +1,5 @@
 <div>   
-    <input type="text" placeholder="Search.." onkeypress="FirstTap()" [(ngModel)]="searchData" (input)="getData(searchData)" list="progName"/>
+    <input type="text" placeholder="Search.." keypress="FirstTap()" [(ngModel)]="searchData" (input)="getData(searchData)" list="progName"/>
     <datalist id="progName" >
         <option *ngFor="let prog of listOfPrograms" value="{{prog.programName}}">
     </datalist>
